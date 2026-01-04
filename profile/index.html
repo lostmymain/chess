@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessClub - Профиль</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../play/index.html" class="logo">
+                <i class="fas fa-chess-king logo-icon"></i>
+                <span class="logo-text">ChessClub</span>
+            </a>
+
+            <div class="nav-buttons">
+                <a href="../play/index.html" class="nav-btn">
+                    <i class="fas fa-play"></i>
+                    <span>Играть</span>
+                </a>
+                
+                <a href="../learning/index.html" class="nav-btn">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Обучение</span>
+                </a>
+                
+                <a href="../community/index.html" class="nav-btn">
+                    <i class="fas fa-users"></i>
+                    <span>Сообщество</span>
+                </a>
+                
+                <a href="../tournaments/index.html" class="nav-btn">
+                    <i class="fas fa-trophy"></i>
+                    <span>Турниры</span>
+                </a>
+                
+                <a href="../shop/index.html" class="nav-btn">
+                    <i class="fas fa-store"></i>
+                    <span>Магазин</span>
+                </a>
+            </div>
+
+            <!-- Правая часть навигации -->
+            <div class="nav-right">
+                <!-- Кнопки авторизации -->
+                <div class="auth-buttons" id="authButtons">
+                    <button class="auth-btn btn-login" onclick="openLoginModal()">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Войти</span>
+                    </button>
+                    <button class="auth-btn btn-signup" onclick="openRegisterModal()">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Регистрация</span>
+                    </button>
+                </div>
+                
+                <!-- Настройки -->
+                <div class="settings-dropdown" id="settingsDropdown">
+                    <div class="settings-btn" id="settingsBtn">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="settings-dropdown-content" id="settingsDropdownContent">
+                        <div class="settings-header">Настройки</div>
+                        
+                        <div class="settings-item">
+                            <div>
+                                <i class="fas fa-language"></i>
+                                Язык (Language)
+                            </div>
+                            <select class="language-select" id="languageSelect" onchange="changeLanguage()">
+                                <option value="ru">Русский</option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                        
+                        <div class="settings-item">
+                            <div>
+                                <i class="fas fa-palette"></i>
+                                Тема
+                            </div>
+                            <select class="theme-select" id="themeSelect" onchange="changeTheme()">
+                                <option value="dark">Темная</option>
+                                <option value="light">Светлая</option>
+                            </select>
+                        </div>
+                        
+                        <div class="settings-item">
+                            <div>
+                                <i class="fas fa-volume-up"></i>
+                                Звук
+                            </div>
+                            <input type="range" min="0" max="100" value="50" class="volume-slider" id="volumeSlider" oninput="changeVolume()">
+                        </div>
+                        
+                        <div class="performance-stats">
+                            <div class="stat-item">
+                                <span class="stat-value" id="pingValue">89 ms</span>
+                                <span class="stat-label">PING</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="serverValue">2 ms</span>
+                                <span class="stat-label">SERVER</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="fpsValue">60</span>
+                                <span class="stat-label">FPS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент профиля -->
+    <main class="content profile-content">
+        <div class="profile-header-section">
+            <div class="profile-avatar-container">
+                <div class="profile-avatar-large" id="profileAvatarLarge" onclick="changeAvatar()">
+                    <div class="profile-avatar-text" id="profileAvatarText">?</div>
+                    <img class="profile-avatar-img" id="profileAvatarImg" src="" alt="Аватар">
+                </div>
+                <button class="btn-change-avatar" onclick="changeAvatar()">
+                    <i class="fas fa-camera"></i> Сменить аватар
+                </button>
+            </div>
+            
+            <div class="profile-info">
+                <h1 class="profile-name" id="profileName">Пользователь</h1>
+                <div class="profile-email" id="profileEmail">user@example.com</div>
+                <div class="profile-joined" id="profileJoined">Зарегистрирован: 15 марта 2024</div>
+                
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="profileRating">1200</div>
+                        <div class="stat-label">Рейтинг</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="profileGames">45</div>
+                        <div class="stat-label">Игр</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="profileWins">25</div>
+                        <div class="stat-label">Побед</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="profileBalance">1 250</div>
+                        <div class="stat-label">Золота</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Настройки профиля -->
+        <div class="profile-settings-section">
+            <h2><i class="fas fa-user-cog"></i> Настройки профиля</h2>
+            
+            <div class="settings-form">
+                <div class="form-group">
+                    <label class="form-label" for="profileUsername">Имя пользователя</label>
+                    <input type="text" id="profileUsername" class="form-input" placeholder="Введите новый никнейм">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="profileEmailInput">Email</label>
+                    <input type="email" id="profileEmailInput" class="form-input" placeholder="Введите новый email">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="profileCurrentPassword">Текущий пароль</label>
+                    <input type="password" id="profileCurrentPassword" class="form-input" placeholder="Введите текущий пароль">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="profileNewPassword">Новый пароль</label>
+                    <input type="password" id="profileNewPassword" class="form-input" placeholder="Введите новый пароль">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="profileConfirmPassword">Подтверждение пароля</label>
+                    <input type="password" id="profileConfirmPassword" class="form-input" placeholder="Повторите новый пароль">
+                </div>
+                
+                <div class="form-buttons">
+                    <button class="btn-primary" onclick="saveProfile()">Сохранить изменения</button>
+                    <button class="btn-secondary" onclick="resetForm()">Сбросить</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статистика игр -->
+        <div class="profile-stats-section">
+            <h2><i class="fas fa-chart-line"></i> Статистика игр</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-title">Всего игр</div>
+                    <div class="stat-number">45</div>
+                    <div class="stat-progress">
+                        <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Побед</div>
+                    <div class="stat-number">25</div>
+                    <div class="stat-progress">
+                        <div class="progress-bar win" style="width: 56%"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Поражений</div>
+                    <div class="stat-number">15</div>
+                    <div class="stat-progress">
+                        <div class="progress-bar lose" style="width: 33%"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Ничьих</div>
+                    <div class="stat-number">5</div>
+                    <div class="stat-progress">
+                        <div class="progress-bar draw" style="width: 11%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="gamesChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Последние игры -->
+        <div class="recent-games-section">
+            <h2><i class="fas fa-history"></i> Последние игры</h2>
+            <div class="games-list" id="gamesList">
+                <!-- Динамически загружается -->
+            </div>
+        </div>
+
+        <!-- Действия -->
+        <div class="profile-actions">
+            <button class="btn-danger" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Выйти из аккаунта
+            </button>
+            <button class="btn-warning" onclick="deleteAccount()">
+                <i class="fas fa-trash"></i> Удалить аккаунт
+            </button>
+        </div>
+    </main>
+
+    <!-- Модальные окна -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <h2 id="loginTitle">Вход в ChessClub</h2>
+            <div class="form-group">
+                <label class="form-label" for="loginUsername">Логин или Email</label>
+                <input type="text" id="loginUsername" class="form-input" placeholder="Введите логин или email">
+                <div class="error-message" id="loginUsernameError">Пожалуйста, введите логин или email</div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="loginPassword">Пароль</label>
+                <input type="password" id="loginPassword" class="form-input" placeholder="Введите пароль">
+                <div class="error-message" id="loginPasswordError">Пожалуйста, введите пароль</div>
+            </div>
+            <div class="success-message" id="loginSuccess">Вход выполнен успешно!</div>
+            <div class="error-message" id="loginError">Неверный логин или пароль</div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-primary" onclick="login()">Войти</button>
+                <button class="modal-btn modal-btn-secondary" onclick="closeLoginModal()">Отмена</button>
+            </div>
+            <div class="modal-switch">
+                <span>Нет аккаунта?</span> <a href="#" onclick="switchToRegister()">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <h2 id="registerTitle">Регистрация в ChessClub</h2>
+            <div class="form-group">
+                <label class="form-label" for="registerUsername">Логин</label>
+                <input type="text" id="registerUsername" class="form-input" placeholder="Придумайте логин">
+                <div class="error-message" id="registerUsernameError">Логин должен содержать от 3 до 20 символов</div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" class="form-input" placeholder="Введите ваш email">
+                <div class="error-message" id="registerEmailError">Введите корректный email</div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="registerPassword">Пароль</label>
+                <input type="password" id="registerPassword" class="form-input" placeholder="Придумайте пароль">
+                <div class="error-message" id="registerPasswordError">Пароль должен содержать минимум 6 символов</div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="registerPasswordConfirm">Подтверждение пароля</label>
+                <input type="password" id="registerPasswordConfirm" class="form-input" placeholder="Повторите пароль">
+                <div class="error-message" id="registerPasswordConfirmError">Пароли не совпадают</div>
+            </div>
+            <div class="success-message" id="registerSuccess">Регистрация прошла успешно!</div>
+            <div class="error-message" id="registerError">Ошибка при регистрации</div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-primary" onclick="register()">Зарегистрироваться</button>
+                <button class="modal-btn modal-btn-secondary" onclick="closeRegisterModal()">Отмена</button>
+            </div>
+            <div class="modal-switch">
+                <span>Уже есть аккаунт?</span> <a href="#" onclick="switchToLogin()">Войти</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно удаления аккаунта -->
+    <div class="modal" id="deleteAccountModal">
+        <div class="modal-content">
+            <h2>Удаление аккаунта</h2>
+            <p>Вы уверены, что хотите удалить свой аккаунт? Это действие нельзя отменить.</p>
+            <div class="form-group">
+                <label class="form-label">Введите пароль для подтверждения</label>
+                <input type="password" id="deletePassword" class="form-input" placeholder="Введите ваш пароль">
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-danger" onclick="confirmDelete()">Удалить аккаунт</button>
+                <button class="modal-btn modal-btn-secondary" onclick="closeDeleteAccountModal()">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

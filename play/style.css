@@ -1,0 +1,264 @@
+/* Стили для страницы "Играть" */
+.play-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.option-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(209, 181, 104, 0.2);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.light-theme .option-card {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(184, 148, 69, 0.2);
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+    background: rgba(209, 181, 104, 0.1);
+    border-color: #d1b568;
+}
+
+body.light-theme .option-card:hover {
+    background: rgba(184, 148, 69, 0.1);
+    border-color: #b89445;
+}
+
+.option-card i {
+    font-size: 2.5rem;
+    color: #d1b568;
+    margin-bottom: 15px;
+}
+
+body.light-theme .option-card i {
+    color: #b89445;
+}
+
+.option-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #d1b568;
+}
+
+body.light-theme .option-card h3 {
+    color: #b89445;
+}
+
+.option-card p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+body.light-theme .option-card p {
+    color: rgba(51, 51, 51, 0.7);
+}
+
+.chess-board-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.chess-board {
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    border: 3px solid #d1b568;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.chess-square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    user-select: none;
+}
+
+.chess-square.white {
+    background-color: #f0d9b5;
+}
+
+.chess-square.black {
+    background-color: #b58863;
+}
+
+.chess-square:hover {
+    background-color: rgba(209, 181, 104, 0.3);
+}
+
+.chess-square.selected {
+    background-color: rgba(209, 181, 104, 0.5);
+}
+
+.chess-piece {
+    width: 80%;
+    height: 80%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+.board-controls {
+    display: flex;
+    gap: 15px;
+}
+
+.board-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+body.light-theme .board-btn {
+    background: rgba(0, 0, 0, 0.05);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.board-btn:hover {
+    background: rgba(209, 181, 104, 0.15);
+    transform: translateY(-2px);
+}
+
+body.light-theme .board-btn:hover {
+    background: rgba(184, 148, 69, 0.15);
+}
+
+.board-btn i {
+    font-size: 0.9rem;
+}
+
+.game-info {
+    margin-top: 40px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(209, 181, 104, 0.2);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 600px;
+}
+
+body.light-theme .game-info {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(184, 148, 69, 0.2);
+}
+
+.game-info h3 {
+    color: #d1b568;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body.light-theme .game-info h3 {
+    color: #b89445;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.light-theme .info-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+body.light-theme .info-label {
+    color: rgba(51, 51, 51, 0.7);
+}
+
+.info-value {
+    font-weight: 600;
+    color: #d1b568;
+}
+
+body.light-theme .info-value {
+    color: #b89445;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .play-options {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .option-card {
+        padding: 20px;
+    }
+    
+    .chess-board {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .board-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .play-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .chess-board {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .board-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}

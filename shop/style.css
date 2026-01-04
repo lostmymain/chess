@@ -1,0 +1,364 @@
+/* Стили для страницы "Магазин" */
+.user-balance {
+    margin: 40px 0;
+}
+
+.balance-card {
+    background: linear-gradient(135deg, rgba(209, 181, 104, 0.2), rgba(196, 163, 86, 0.1));
+    border: 1px solid rgba(209, 181, 104, 0.3);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+body.light-theme .balance-card {
+    background: linear-gradient(135deg, rgba(184, 148, 69, 0.2), rgba(166, 132, 53, 0.1));
+    border: 1px solid rgba(184, 148, 69, 0.3);
+}
+
+.balance-card i {
+    font-size: 2.5rem;
+    color: #d1b568;
+}
+
+.balance-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+}
+
+body.light-theme .balance-label {
+    color: rgba(51, 51, 51, 0.7);
+}
+
+.balance-amount {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.btn-add-funds {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #d1b568, #c4a356);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-add-funds:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(209, 181, 104, 0.3);
+}
+
+/* Категории */
+.shop-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0;
+    justify-content: center;
+}
+
+.category-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(209, 181, 104, 0.2);
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+body.light-theme .category-btn {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(184, 148, 69, 0.2);
+    color: rgba(51, 51, 51, 0.8);
+}
+
+.category-btn:hover {
+    background: rgba(209, 181, 104, 0.1);
+    transform: translateY(-2px);
+}
+
+.category-btn.active {
+    background: linear-gradient(135deg, #d1b568, #c4a356);
+    color: #1a1a1a;
+    border-color: #d1b568;
+}
+
+/* Сетка товаров */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(209, 181, 104, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+body.light-theme .product-card {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(184, 148, 69, 0.2);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: #d1b568;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product-card.owned {
+    border-color: #4caf50;
+}
+
+.product-image {
+    height: 150px;
+    background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #d1b568;
+}
+
+body.light-theme .product-image {
+    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #d1b568;
+}
+
+body.light-theme .product-title {
+    color: #b89445;
+}
+
+.product-description {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 15px;
+    min-height: 40px;
+}
+
+body.light-theme .product-description {
+    color: rgba(51, 51, 51, 0.7);
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.price-amount {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.product-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-buy {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #d1b568, #c4a356);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-buy:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(209, 181, 104, 0.3);
+}
+
+.btn-buy:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-preview {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+body.light-theme .btn-preview {
+    background: rgba(0, 0, 0, 0.05);
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.btn-preview:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+body.light-theme .btn-preview:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+/* Мои покупки */
+.my-purchases-section {
+    margin: 60px 0;
+}
+
+.my-purchases-section h2 {
+    color: #d1b568;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body.light-theme .my-purchases-section h2 {
+    color: #b89445;
+}
+
+.purchases-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.purchase-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(209, 181, 104, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+body.light-theme .purchase-item {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(184, 148, 69, 0.2);
+}
+
+.purchase-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #d1b568, #c4a356);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+}
+
+.purchase-info h4 {
+    color: #d1b568;
+    margin-bottom: 5px;
+}
+
+.purchase-date {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+body.light-theme .purchase-date {
+    color: rgba(51, 51, 51, 0.6);
+}
+
+/* Модальное окно пополнения */
+.funds-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.funds-option {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(209, 181, 104, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.light-theme .funds-option {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(184, 148, 69, 0.2);
+}
+
+.funds-option:hover {
+    border-color: #d1b568;
+    transform: translateY(-2px);
+}
+
+.funds-option.selected {
+    background: rgba(209, 181, 104, 0.1);
+    border-color: #d1b568;
+}
+
+.funds-amount {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #ffd700;
+}
+
+.funds-price {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+body.light-theme .funds-price {
+    color: rgba(51, 51, 51, 0.7);
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .funds-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .balance-card {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,262 @@
+/* Стили для страницы "Сообщество" */
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.community-section {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(209, 181, 104, 0.2);
+    border-radius: 12px;
+    padding: 25px;
+}
+
+body.light-theme .community-section {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(184, 148, 69, 0.2);
+}
+
+.community-section h2 {
+    color: #d1b568;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body.light-theme .community-section h2 {
+    color: #b89445;
+}
+
+/* Рейтинговая таблица */
+.rating-table {
+    margin: 20px 0;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 60px 1fr 100px 80px;
+    padding: 12px 15px;
+    background: rgba(209, 181, 104, 0.1);
+    border-radius: 8px;
+    font-weight: 600;
+    color: #d1b568;
+    margin-bottom: 10px;
+}
+
+body.light-theme .table-header {
+    background: rgba(184, 148, 69, 0.1);
+}
+
+.table-body {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.rating-item {
+    display: grid;
+    grid-template-columns: 60px 1fr 100px 80px;
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+body.light-theme .rating-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.rating-item:hover {
+    background: rgba(209, 181, 104, 0.05);
+}
+
+.rating-item.current-user {
+    background: rgba(209, 181, 104, 0.15);
+    border-radius: 8px;
+}
+
+.rating-place {
+    font-weight: bold;
+    color: #d1b568;
+}
+
+.rating-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rating-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d1b568, #c4a356);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.rating-rating {
+    font-weight: 600;
+    color: #4caf50;
+}
+
+.rating-games {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+/* Форум */
+.forum-topics {
+    margin: 20px 0;
+}
+
+.topic {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.light-theme .topic {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.topic:hover {
+    background: rgba(209, 181, 104, 0.05);
+    padding-left: 20px;
+}
+
+.topic-title {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme .topic-title {
+    color: rgba(51, 51, 51, 0.9);
+}
+
+.topic-info {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+body.light-theme .topic-info {
+    color: rgba(51, 51, 51, 0.6);
+}
+
+/* Друзья */
+.friends-list {
+    margin: 20px 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.light-theme .friend-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.friend-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d1b568, #c4a356);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.friend-info h4 {
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.friend-status {
+    font-size: 0.8rem;
+    color: #4caf50;
+}
+
+.friend-status.offline {
+    color: #ff6b6b;
+}
+
+/* Клубы */
+.clubs-list {
+    margin: 20px 0;
+}
+
+.club {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.light-theme .club {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.club:hover {
+    background: rgba(209, 181, 104, 0.05);
+    padding-left: 20px;
+}
+
+.club-name {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.club-members {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+body.light-theme .club-members {
+    color: rgba(51, 51, 51, 0.6);
+}
+
+/* Кнопки */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #d1b568, #c4a356);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(209, 181, 104, 0.3);
+}
+
+@media (max-width: 768px) {
+    .community-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .table-header,
+    .rating-item {
+        grid-template-columns: 50px 1fr 80px 60px;
+        font-size: 0.9rem;
+    }
+}

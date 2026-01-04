@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessClub - Обучение</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../play/index.html" class="logo">
+                <i class="fas fa-chess-king logo-icon"></i>
+                <span class="logo-text">ChessClub</span>
+            </a>
+
+            <div class="nav-buttons">
+                <!-- Играть -->
+                <a href="../play/index.html" class="nav-btn">
+                    <i class="fas fa-play"></i>
+                    <span>Играть</span>
+                </a>
+                
+                <!-- Обучение -->
+                <div class="nav-dropdown">
+                    <button class="nav-btn active">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Обучение</span>
+                    </button>
+                    <div class="nav-dropdown-content">
+                        <div class="nav-dropdown-header">Обучение</div>
+                        <a href="#" class="nav-dropdown-item" onclick="startLesson('basics')">
+                            <i class="fas fa-chess-pawn"></i>
+                            Основы
+                        </a>
+                        <a href="#" class="nav-dropdown-item" onclick="startLesson('tactics')">
+                            <i class="fas fa-chess-knight"></i>
+                            Тактика
+                        </a>
+                        <a href="#" class="nav-dropdown-item" onclick="startLesson('openings')">
+                            <i class="fas fa-chess-rook"></i>
+                            Дебюты
+                        </a>
+                        <a href="#" class="nav-dropdown-item" onclick="startLesson('endgame')">
+                            <i class="fas fa-chess-queen"></i>
+                            Эндшпиль
+                        </a>
+                        <a href="#" class="nav-dropdown-item" onclick="startLesson('strategy')">
+                            <i class="fas fa-brain"></i>
+                            Стратегия
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Сообщество -->
+                <div class="nav-dropdown">
+                    <a href="../community/index.html" class="nav-btn">
+                        <i class="fas fa-users"></i>
+                        <span>Сообщество</span>
+                    </a>
+                    <div class="nav-dropdown-content">
+                        <div class="nav-dropdown-header">Сообщество</div>
+                        <a href="../community/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-ranking-star"></i>
+                            Рейтинг игроков
+                        </a>
+                        <a href="../community/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-comments"></i>
+                            Форум
+                        </a>
+                        <a href="../community/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-user-friends"></i>
+                            Друзья
+                        </a>
+                        <a href="../community/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-video"></i>
+                            Прямые трансляции
+                        </a>
+                        <a href="../community/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-chess-board"></i>
+                            Клубы
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Турниры -->
+                <div class="nav-dropdown">
+                    <a href="../tournaments/index.html" class="nav-btn">
+                        <i class="fas fa-trophy"></i>
+                        <span>Турниры</span>
+                    </a>
+                    <div class="nav-dropdown-content">
+                        <div class="nav-dropdown-header">Турниры</div>
+                        <a href="../tournaments/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-list"></i>
+                            Все турниры
+                        </a>
+                        <a href="../tournaments/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-plus-circle"></i>
+                            Создать турнир
+                        </a>
+                        <a href="../tournaments/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-user-check"></i>
+                            Мои турниры
+                        </a>
+                        <a href="../tournaments/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            Календарь турниров
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Магазин -->
+                <div class="nav-dropdown">
+                    <a href="../shop/index.html" class="nav-btn">
+                        <i class="fas fa-store"></i>
+                        <span>Магазин</span>
+                    </a>
+                    <div class="nav-dropdown-content">
+                        <div class="nav-dropdown-header">Магазин</div>
+                        <a href="../shop/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-crown"></i>
+                            Подписки
+                        </a>
+                        <a href="../shop/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-chess-board"></i>
+                            Коллекции досок
+                        </a>
+                        <a href="../shop/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-chess-king"></i>
+                            Коллекции фигур
+                        </a>
+                        <a href="../shop/index.html" class="nav-dropdown-item">
+                            <i class="fas fa-shopping-cart"></i>
+                            Мои покупки
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая часть навигации -->
+            <div class="nav-right">
+                <!-- Меню пользователя -->
+                <div class="user-dropdown" id="userDropdown">
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <div class="user-avatar" id="userAvatar">
+                            <div class="user-avatar-text" id="userAvatarText">?</div>
+                            <img class="user-avatar-img" id="userAvatarImg" src="" alt="Аватар">
+                        </div>
+                        <span class="user-name" id="userName">Пользователь</span>
+                    </div>
+                    
+                    <!-- Выпадающее меню профиля -->
+                    <div class="profile-dropdown-content" id="profileDropdownContent">
+                        <div class="profile-header">
+                            <div class="profile-avatar-large" id="profileAvatarLarge" onclick="changeAvatar()">
+                                <div class="profile-avatar-text" id="profileAvatarText">?</div>
+                                <img class="profile-avatar-img" id="profileAvatarImg" src="" alt="Аватар">
+                            </div>
+                            <div class="profile-name" id="profileName">Пользователь</div>
+                            <div class="profile-email" id="profileEmail">user@example.com</div>
+                            <div class="profile-balance">
+                                <i class="fas fa-coins"></i>
+                                <span id="profileBalance">1 250</span> золота
+                            </div>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <div class="profile-section-title">Настройки профиля</div>
+                            
+                            <div class="profile-form-group">
+                                <label class="profile-form-label" for="profileUsername">Имя пользователя</label>
+                                <input type="text" id="profileUsername" class="profile-form-input" placeholder="Введите новый никнейм">
+                            </div>
+                            
+                            <div class="profile-form-group">
+                                <label class="profile-form-label" for="profileEmailInput">Email</label>
+                                <input type="email" id="profileEmailInput" class="profile-form-input" placeholder="Введите новый email">
+                            </div>
+                            
+                            <div class="profile-form-group">
+                                <label class="profile-form-label" for="profileCurrentPassword">Текущий пароль</label>
+                                <input type="password" id="profileCurrentPassword" class="profile-form-input" placeholder="Введите текущий пароль">
+                            </div>
+                            
+                            <div class="profile-form-group">
+                                <label class="profile-form-label" for="profileNewPassword">Новый пароль</label>
+                                <input type="password" id="profileNewPassword" class="profile-form-input" placeholder="Введите новый пароль">
+                            </div>
+                            
+                            <div class="profile-form-group">
+                                <label class="profile-form-label" for="profileConfirmPassword">Подтверждение пароля</label>
+                                <input type="password" id="profileConfirmPassword" class="profile-form-input" placeholder="Повторите новый пароль">
+                            </div>
+                            
+                            <div class="profile-form-buttons">
+                                <button class="profile-btn profile-btn-save" onclick="saveProfile()">Сохранить</button>
+                                <button class="profile-btn profile-btn-cancel" onclick="closeProfileMenu()">Отмена</button>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-logout" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Выйти из аккаунта
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Кнопки авторизации -->
+                <div class="auth-buttons" id="authButtons">
+                    <button class="auth-btn btn-login" onclick="openLoginModal()">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Войти</span>
+                    </button>
+                    <button class="auth-btn btn-signup" onclick="openRegisterModal()">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Регистрация</span>
+                    </button>
+                </div>
+                
+                <!-- Настройки -->
+                <div class="settings-dropdown" id="settingsDropdown">
+                    <div class="settings-btn" id="settingsBtn">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="settings-dropdown-content" id="settingsDropdownContent">
+                        <div class="settings-header">Настройки</div>
+                        
+                        <div class="settings-item">
+                            <div>
+                                <i class="fas fa-language"></i>
+                                Язык (Language)
+                            </div>
+                            <select class="language-select" id="languageSelect" onchange="changeLanguage()">
+                                <option value="ru">Русский</option>
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                        
+                        <div class="settings-item">
+                            <div>
+                                <i class="fas fa-palette"></i>
+                                Тема
+                            </div>
+                            <select class="theme-select" id="themeSelect" onchange="changeTheme()">
+                                <option value="dark">Темная</option>
+                                <option value="light">Светлая</option>
+                            </select>
+                        </div>
+                        
+                        <div class="settings-item">
+                            <div>
+                                <i class="fas fa-volume-up"></i>
+                                Звук
+                            </div>
+                            <input type="range" min="0" max="100" value="50" class="volume-slider" id="volumeSlider" oninput="changeVolume()">
+                        </div>
+                        
+                        <div class="performance-stats">
+                            <div class="stat-item">
+                                <span class="stat-value" id="pingValue">89 ms</span>
+                                <span class="stat-label">PING</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="serverValue">2 ms</span>
+                                <span class="stat-label">SERVER</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value" id="fpsValue">60</span>
+                                <span class="stat-label">FPS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="content">
+        <h1 class="welcome-message">Обучение шахматам</h1>
+        <p class="subtitle">Улучшите свои навыки с нашими уроками</p>
+        
+        <div class="lessons-grid">
+            <div class="lesson-card">
+                <i class="fas fa-chess-pawn"></i>
+                <h3>Основы шахмат</h3>
+                <p>Изучите правила, ходы фигур и основные принципы игры</p>
+                <button class="lesson-btn" onclick="startLesson('basics')">Начать обучение</button>
+            </div>
+            
+            <div class="lesson-card">
+                <i class="fas fa-chess-knight"></i>
+                <h3>Тактика</h3>
+                <p>Комбинации, вилки, связки и тактические приемы</p>
+                <button class="lesson-btn" onclick="startLesson('tactics')">Начать обучение</button>
+            </div>
+            
+            <div class="lesson-card">
+                <i class="fas fa-chess-rook"></i>
+                <h3>Дебюты</h3>
+                <p>Изучите популярные дебюты и их основные идеи</p>
+                <button class="lesson-btn" onclick="startLesson('openings')">Начать обучение</button>
+            </div>
+            
+            <div class="lesson-card">
+                <i class="fas fa-chess-queen"></i>
+                <h3>Эндшпиль</h3>
+                <p>Техника игры в окончаниях, матование и пешечные окончания</p>
+                <button class="lesson-btn" onclick="startLesson('endgame')">Начать обучение</button>
+            </div>
+            
+            <div class="lesson-card">
+                <i class="fas fa-brain"></i>
+                <h3>Стратегия</h3>
+                <p>Планирование, контроль центра и позиционная игра</p>
+                <button class="lesson-btn" onclick="startLesson('strategy')">Начать обучение</button>
+            </div>
+            
+            <div class="lesson-card">
+                <i class="fas fa-puzzle-piece"></i>
+                <h3>Задачи</h3>
+                <p>Решайте шахматные задачи для развития тактического зрения</p>
+                <button class="lesson-btn" onclick="startLesson('puzzles')">Начать обучение</button>
+            </div>
+        </div>
+        
+        <div class="progress-section">
+            <h2><i class="fas fa-chart-line"></i> Ваш прогресс</h2>
+            <div class="progress-container">
+                <div class="progress-item">
+                    <span class="progress-label">Основы</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="basicsProgress"></div>
+                    </div>
+                    <span class="progress-percent" id="basicsPercent">0%</span>
+                </div>
+                
+                <div class="progress-item">
+                    <span class="progress-label">Тактика</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="tacticsProgress"></div>
+                    </div>
+                    <span class="progress-percent" id="tacticsPercent">0%</span>
+                </div>
+                
+                <div class="progress-item">
+                    <span class="progress-label">Дебюты</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="openingsProgress"></div>
+                    </div>
+                    <span class="progress-percent" id="openingsPercent">0%</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Модальные окна -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <h2 id="loginTitle">Вход в ChessClub</h2>
+            <div class="form-group">
+                <label class="form-label" for="loginUsername">Логин или Email</label>
+                <input type="text" id="loginUsername" class="form-input" placeholder="Введите логин или email">
+                <div class="error-message" id="loginUsernameError">Пожалуйста, введите логин или email</div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="loginPassword">Пароль</label>
+                <input type="password" id="loginPassword" class="form-input" placeholder="Введите пароль">
+                <div class="error-message" id="loginPasswordError">Пожалуйста, введите пароль</div>
+            </div>
+            <div class="success-message" id="loginSuccess">Вход выполнен успешно!</div>
+            <div class="error-message" id="loginError">Неверный логин или пароль</div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-primary" onclick="login()">Войти</button>
+                <button class="modal-btn modal-btn-secondary" onclick="closeLoginModal()">Отмена</button>
+            </div>
+            <div class="modal-switch">
+                <span>Нет аккаунта?</span> <a href="#" onclick="switchToRegister()">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <h2 id="registerTitle">Регистрация в ChessClub</h2>
+            <div class="form-group">
+                <label class="form-label" for="registerUsername">Логин</label>
+                <input type="text" id="registerUsername" class="form-input" placeholder="Придумайте логин">
+                <div class="error-message" id="registerUsernameError">Логин должен содержать от 3 до 20 символов</div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" class="form-input" placeholder="Введите ваш email">
+                <div class="error-message" id="registerEmailError">Введите корректный email</div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="registerPassword">Пароль</label>
+                <input type="password" id="registerPassword" class="form-input" placeholder="Придумайте пароль">
+                <div class="error-message" id="registerPasswordError">Пароль должен содержать минимум 6 символов</div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="registerPasswordConfirm">Подтверждение пароля</label>
+                <input type="password" id="registerPasswordConfirm" class="form-input" placeholder="Повторите пароль">
+                <div class="error-message" id="registerPasswordConfirmError">Пароли не совпадают</div>
+            </div>
+            <div class="success-message" id="registerSuccess">Регистрация прошла успешно!</div>
+            <div class="error-message" id="registerError">Ошибка при регистрации</div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-primary" onclick="register()">Зарегистрироваться</button>
+                <button class="modal-btn modal-btn-secondary" onclick="closeRegisterModal()">Отмена</button>
+            </div>
+            <div class="modal-switch">
+                <span>Уже есть аккаунт?</span> <a href="#" onclick="switchToLogin()">Войти</a>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+
+    <script src="../shared.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

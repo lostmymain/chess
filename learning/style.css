@@ -1,0 +1,167 @@
+/* Стили для страницы "Обучение" */
+.lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.lesson-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(209, 181, 104, 0.2);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+body.light-theme .lesson-card {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(184, 148, 69, 0.2);
+}
+
+.lesson-card:hover {
+    transform: translateY(-5px);
+    border-color: #d1b568;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.lesson-card i {
+    font-size: 3rem;
+    color: #d1b568;
+    margin-bottom: 20px;
+}
+
+.lesson-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #d1b568;
+}
+
+body.light-theme .lesson-card h3 {
+    color: #b89445;
+}
+
+.lesson-card p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+    font-size: 1rem;
+    min-height: 60px;
+}
+
+body.light-theme .lesson-card p {
+    color: rgba(51, 51, 51, 0.7);
+}
+
+.lesson-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #d1b568, #c4a356);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.lesson-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(209, 181, 104, 0.3);
+}
+
+/* Прогресс обучения */
+.progress-section {
+    margin-top: 60px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(209, 181, 104, 0.2);
+    border-radius: 16px;
+}
+
+body.light-theme .progress-section {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(184, 148, 69, 0.2);
+}
+
+.progress-section h2 {
+    color: #d1b568;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+body.light-theme .progress-section h2 {
+    color: #b89445;
+}
+
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.progress-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.progress-label {
+    width: 100px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme .progress-label {
+    color: rgba(51, 51, 51, 0.9);
+}
+
+.progress-bar {
+    flex: 1;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+body.light-theme .progress-bar {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #d1b568, #c4a356);
+    border-radius: 5px;
+    width: 0%;
+    transition: width 1s ease;
+}
+
+.progress-percent {
+    width: 50px;
+    text-align: right;
+    font-weight: 600;
+    color: #d1b568;
+}
+
+@media (max-width: 768px) {
+    .lessons-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .progress-label {
+        width: 100%;
+    }
+    
+    .progress-bar {
+        width: 100%;
+    }
+}
